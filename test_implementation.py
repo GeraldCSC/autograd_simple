@@ -14,5 +14,11 @@ def test_sigmoid():
 
     assert math.isclose(x.grad, true_grad)
 
+def test_self_add():
+    x = Node(2)
 
-test_sigmoid()
+    result = x + x
+
+    result.backward()
+
+    assert x.grad == 2
